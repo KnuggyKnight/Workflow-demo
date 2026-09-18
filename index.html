@@ -64,19 +64,122 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px 8px
 </div>
 <script>
 const jobs=[
-{id:"WO-16969",name:"UAV Assembly A-17",customer:"Apex Manufacturing",steps:[
+{
+  id:"WO-00001",
+  name:"Electronics Box",
+  customer:"Starling Systems",
+  steps:[
+
+    {
+      name:"Gather Required Tools",
+      time:"5 min",
+      ins:[
+        "Gather a rivet gun.",
+        "Gather the required rivets.",
+        "Gather the required screwdrivers and drivers.",
+        "Gather measuring tools or placement templates.",
+        "Gather cleaning supplies for the adhesive stud mounting surfaces.",
+        "Gather scissors or the approved cutting tool for the foam seals.",
+        "Verify all required tools are available before beginning assembly."
+      ]
+    },
+
+    {
+      name:"Lid - Install Acrylic Back Plate",
+      time:"8 min",
+      ins:[
+        "Position the acrylic back plate on the inside of the lid.",
+        "Align the acrylic back plate with the mounting holes.",
+        "Install the required rivets using the rivet gun.",
+        "Verify the acrylic back plate is secure."
+      ]
+    },
+
+    {
+      name:"Lid - Install Clips",
+      time:"5 min",
+      ins:[
+        "Position the clips in their designated locations on the lid.",
+        "Install the clips using the required hardware.",
+        "Verify the clips are secure and correctly oriented.",
+        "Verify the clips will properly engage with the main frame."
+      ]
+    },
+
+    {
+      name:"Main Frame - Install Adhesive Studs",
+      time:"10 min",
+      ins:[
+        "Clean the adhesive stud mounting locations on the bottom of the main frame.",
+        "Verify the correct location for each adhesive stud.",
+        "Install the adhesive studs.",
+        "Verify all studs are properly positioned and securely attached."
+      ]
+    },
+
+    {
+      name:"Main Frame - Install Fans and Fan Guards",
+      time:"15 min",
+      ins:[
+        "Position all four fans in their designated locations.",
+        "Verify the correct fan orientation and airflow direction.",
+        "Position the fan guards.",
+        "Secure the fans and fan guards using the required hardware.",
+        "Verify all four fans are securely mounted."
+      ]
+    },
+
+    {
+      name:"Main Frame - Install Lid Clips",
+      time:"5 min",
+      ins:[
+        "Position the lid clips on the main frame.",
+        "Install the clips using the required hardware.",
+        "Verify alignment with the clips installed on the lid.",
+        "Test-fit the lid and verify it seats correctly."
+      ]
+    },
+
+    {
+      name:"Main Frame - Install Foam Seals",
+      time:"8 min",
+      ins:[
+        "Measure the required rubber foam sealing material.",
+        "Cut the foam seal to the required length.",
+        "Install the foam seal in the designated locations.",
+        "Verify the foam seal is fully seated and continuous."
+      ]
+    },
+
+    {
+      name:"Final Assembly Inspection",
+      time:"5 min",
+      ins:[
+        "Verify the acrylic back plate is secure.",
+        "Verify all lid and main frame clips are secure.",
+        "Verify all four fans and fan guards are installed correctly.",
+        "Verify the adhesive studs are properly positioned.",
+        "Verify all foam seals are properly installed.",
+        "Test-fit the lid onto the main frame.",
+        "Mark the work order ready for supervisor review."
+      ]
+    }
+
+  ]
+},
+  {id:"WO-16969",name:"UAV Assembly A-17",customer:"Apex Manufacturing",steps:[
 {name:"Inspect airframe",time:"8 min",ins:["Verify the airframe matches the work-order drawing.","Check mounting surfaces for damage, cracks, or debris.","Confirm the correct hardware kit is present."]},
 {name:"Install motor mount",time:"12 min",ins:["Position the motor mount on the marked mounting points.","Install the four mounting bolts by hand.","Tighten evenly to the specified torque."]},
 {name:"Connect wiring",time:"15 min",ins:["Route the harness through the designated channel.","Connect each labeled connector to its matching port.","Verify continuity before closing the enclosure."]},
 {name:"Install electronics cover",time:"7 min",ins:["Place the cover onto the assembly.","Confirm no wires are pinched.","Install and tighten all cover screws."]},
 {name:"Functional test",time:"10 min",ins:["Power the assembly using the approved test procedure.","Verify expected voltage readings.","Record the test result."]},
 {name:"Final inspection",time:"5 min",ins:["Verify all fasteners are installed.","Confirm labels and documentation are present.","Mark the work order ready for supervisor review."]}]},
-{id:"WO-10479",name:"Pump Assembly P-204",customer:"Westline Systems",steps:[
+  {id:"WO-10479",name:"Pump Assembly P-204",customer:"Westline Systems",steps:[
 {name:"Inspect pump",time:"6 min",ins:["Inspect the pump housing for damage.","Verify the correct pump model."]},
 {name:"Install bracket",time:"10 min",ins:["Position the bracket.","Install and tighten the mounting hardware."]},
 {name:"Connect lines",time:"14 min",ins:["Connect inlet and outlet lines.","Check all fittings for proper seating."]},
 {name:"Test assembly",time:"8 min",ins:["Run the specified functional test.","Record the result."]}]},
-{id:"WO-10477",name:"Electrical Control Box",customer:"Northstar Robotics",steps:[
+  {id:"WO-10477",name:"Electrical Control Box",customer:"Northstar Robotics",steps:[
 {name:"Inspect enclosure",time:"5 min",ins:["Verify enclosure and components match the drawing."]},
 {name:"Install components",time:"18 min",ins:["Install components in their marked locations."]},
 {name:"Wire components",time:"25 min",ins:["Route and terminate wires according to the schematic."]},
