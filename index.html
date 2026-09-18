@@ -7,19 +7,21 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   background:#f4f6f8;
-  color:#17202a
+  color:#17202a;
 }
+
 button,input{font:inherit}
 button{cursor:pointer}
 
 .app{
   max-width:1100px;
   margin:auto;
-  padding:24px
+  padding:24px;
 }
 
 .top{
@@ -27,12 +29,12 @@ button{cursor:pointer}
   justify-content:space-between;
   align-items:center;
   gap:16px;
-  margin-bottom:24px
+  margin-bottom:24px;
 }
 
 .brand{
   font-weight:800;
-  font-size:22px
+  font-size:22px;
 }
 
 .muted{color:#68737d}
@@ -42,13 +44,13 @@ button{cursor:pointer}
   border-radius:999px;
   background:#e8eef3;
   font-size:12px;
-  font-weight:700
+  font-weight:700;
 }
 
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:18px
+  gap:18px;
 }
 
 .card{
@@ -56,22 +58,22 @@ button{cursor:pointer}
   border:1px solid #dce2e7;
   border-radius:14px;
   padding:20px;
-  box-shadow:0 2px 8px #00000008
+  box-shadow:0 2px 8px #00000008;
 }
 
 h1{
   font-size:28px;
-  margin:0 0 8px
+  margin:0 0 8px;
 }
 
 h2{
   font-size:20px;
-  margin:0 0 8px
+  margin:0 0 8px;
 }
 
 h3{
   font-size:16px;
-  margin:0
+  margin:0;
 }
 
 .small{font-size:13px}
@@ -83,33 +85,37 @@ h3{
   background:white;
   border-radius:12px;
   padding:17px;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
-.wo:hover{background:#f8fafb}
+.wo:hover{
+  background:#f8fafb;
+}
 
 .row{
   display:flex;
   justify-content:space-between;
   gap:12px;
-  align-items:center
+  align-items:center;
 }
 
-.wo-title{font-weight:750}
+.wo-title{
+  font-weight:750;
+}
 
 .status{
   font-size:12px;
   font-weight:700;
   padding:5px 9px;
   border-radius:999px;
-  background:#eef2f5
+  background:#eef2f5;
 }
 
 .time-display{
   font-size:13px;
   font-weight:700;
   margin-top:8px;
-  text-align:right
+  text-align:right;
 }
 
 .progress{
@@ -117,31 +123,35 @@ h3{
   background:#e9edf0;
   border-radius:10px;
   overflow:hidden;
-  margin-top:13px
+  margin-top:13px;
 }
 
 .bar{
   height:100%;
   background:#263746;
-  border-radius:10px
+  border-radius:10px;
 }
 
-.hidden{display:none!important}
+.hidden{
+  display:none!important;
+}
 
 .back{
   border:0;
   background:transparent;
   padding:0 0 14px;
-  font-weight:700
+  font-weight:700;
 }
 
-.steps{margin-top:20px}
+.steps{
+  margin-top:20px;
+}
 
 .step{
   display:flex;
   gap:12px;
   padding:12px 0;
-  border-bottom:1px solid #edf0f2
+  border-bottom:1px solid #edf0f2;
 }
 
 .dot{
@@ -150,31 +160,33 @@ h3{
   border-radius:50%;
   background:#cbd3d9;
   margin-top:5px;
-  flex:none
+  flex:none;
 }
 
-.done .dot{background:#263746}
+.done .dot{
+  background:#263746;
+}
 
 .current .dot{
   box-shadow:0 0 0 4px #e5eaee;
-  background:#263746
+  background:#263746;
 }
 
 .done .stepname{
   text-decoration:line-through;
-  color:#78838c
+  color:#78838c;
 }
 
 .instructions{
   background:#f6f8f9;
   border-radius:12px;
   padding:18px;
-  margin:18px 0
+  margin:18px 0;
 }
 
 .instructions li{
   margin:9px 0;
-  line-height:1.45
+  line-height:1.45;
 }
 
 .photo{
@@ -186,7 +198,7 @@ h3{
   justify-content:center;
   color:#43515c;
   font-weight:800;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .primary{
@@ -196,141 +208,231 @@ h3{
   color:white;
   padding:14px;
   border-radius:10px;
-  font-weight:800
+  font-weight:800;
 }
 
 .primary:disabled{
   opacity:.5;
-  cursor:not-allowed
+  cursor:not-allowed;
+}
+
+.secondary{
+  width:100%;
+  border:1px solid #cfd6dc;
+  background:white;
+  color:#17202a;
+  padding:13px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+.secondary:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.button-row{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:10px;
+  margin-top:16px;
 }
 
 .kpis{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  margin-top:16px
+  margin-top:16px;
 }
 
 .kpi{
   background:#f6f8f9;
   border-radius:10px;
-  padding:13px
+  padding:13px;
 }
 
 .kpi strong{
   display:block;
   font-size:20px;
-  margin-top:4px
+  margin-top:4px;
 }
 
 table{
   width:100%;
-  border-collapse:collapse
+  border-collapse:collapse;
 }
 
 th,td{
   text-align:left;
   padding:12px 8px;
   border-bottom:1px solid #edf0f2;
-  font-size:14px
+  font-size:14px;
+}
+
+.manager-link{
+  border:0;
+  background:transparent;
+  padding:0;
+  font-weight:800;
+  text-decoration:underline;
+  color:#17202a;
 }
 
 .notice{
   margin-top:12px;
   color:#4f5c65;
-  font-size:13px
+  font-size:13px;
+}
+
+.comparison-good{
+  font-weight:700;
+}
+
+.comparison-over{
+  font-weight:700;
 }
 
 @media(max-width:760px){
-  .app{padding:15px}
-  .grid{grid-template-columns:1fr}
-  .top{align-items:flex-start}
-  .kpis{grid-template-columns:1fr 1fr}
-  .kpis .kpi:last-child{grid-column:span 2}
+
+  .app{
+    padding:15px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .top{
+    align-items:flex-start;
+  }
+
+  .kpis{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .kpis .kpi:last-child{
+    grid-column:span 2;
+  }
+
+  .button-row{
+    grid-template-columns:1fr;
+  }
+
 }
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
 <header class="top">
+
   <div>
-    <div class="brand">STARLING WORKFLOW</div>
-    <div class="muted small">Technician work-order tracking demo</div>
+    <div class="brand">
+      STARLING WORKFLOW
+    </div>
+
+    <div class="muted small">
+      Technician work-order tracking demo
+    </div>
   </div>
 
-  <span class="badge">Demo Mode</span>
+  <span class="badge">
+    Demo Mode
+  </span>
+
 </header>
 
 
-<!-- HOME PAGE -->
+
+<!-- =========================
+     HOME
+========================= -->
 
 <section id="home">
 
 <div class="grid">
 
-<div class="card">
 
-<h2>Technician</h2>
-
-<p class="muted small">
-Signed in as <strong>Dominic Knight</strong>
-</p>
-
-<div id="workOrders"></div>
-
-</div>
-
+<!-- TECHNICIAN -->
 
 <div class="card">
 
-<h2>Manager Overview</h2>
+  <h2>Technician</h2>
 
-<p class="muted small">
-Live-style view of technician progress
-</p>
+  <p class="muted small">
+    Signed in as
+    <strong>Dominic Knight</strong>
+  </p>
 
-<div class="kpis">
-
-<div class="kpi">
-<span class="muted small">Active Jobs</span>
-<strong id="activeJobs">0</strong>
-</div>
-
-<div class="kpi">
-<span class="muted small">Completed Steps</span>
-<strong id="completedSteps">0</strong>
-</div>
-
-<div class="kpi">
-<span class="muted small">Technicians</span>
-<strong>4</strong>
-</div>
+  <div id="workOrders"></div>
 
 </div>
 
 
-<div style="margin-top:20px;overflow:auto">
 
-<table>
+<!-- MANAGER -->
 
-<thead>
-<tr>
-<th>Technician</th>
-<th>Work Order</th>
-<th>Current Step</th>
-<th>Status</th>
-<th>Time</th>
-</tr>
-</thead>
+<div class="card">
 
-<tbody id="managerRows"></tbody>
+  <h2>Manager Overview</h2>
 
-</table>
+  <p class="muted small">
+    Live-style view of technician progress
+  </p>
 
-</div>
+
+  <div class="kpis">
+
+    <div class="kpi">
+      <span class="muted small">
+        Active Jobs
+      </span>
+      <strong id="activeJobs">0</strong>
+    </div>
+
+
+    <div class="kpi">
+      <span class="muted small">
+        Completed Steps
+      </span>
+      <strong id="completedSteps">0</strong>
+    </div>
+
+
+    <div class="kpi">
+      <span class="muted small">
+        Technicians
+      </span>
+      <strong>4</strong>
+    </div>
+
+  </div>
+
+
+  <div style="margin-top:20px;overflow:auto">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>Technician</th>
+          <th>Work Order</th>
+          <th>Current Step</th>
+          <th>Status</th>
+          <th>Time</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="managerRows"></tbody>
+
+    </table>
+
+  </div>
 
 </div>
 
@@ -340,80 +442,230 @@ Live-style view of technician progress
 
 
 
-<!-- JOB PAGE -->
+<!-- =========================
+     TECHNICIAN JOB VIEW
+========================= -->
 
 <section id="job" class="hidden">
 
 <button class="back" id="back">
-← Back to Work Orders
+  ← Back to Work Orders
 </button>
+
 
 <div class="grid">
 
+
 <aside class="card">
 
-<div class="muted small">
-WORK ORDER
-</div>
+  <div class="muted small">
+    WORK ORDER
+  </div>
 
-<h2 id="jobTitle"></h2>
+  <h2 id="jobTitle"></h2>
 
-<div class="muted small" id="jobDesc"></div>
+  <div
+    class="muted small"
+    id="jobDesc">
+  </div>
 
-<div class="steps" id="steps"></div>
+  <div
+    class="steps"
+    id="steps">
+  </div>
 
 </aside>
 
 
+
 <main class="card">
 
-<div class="muted small">
-CURRENT INSTRUCTION
-</div>
+  <div class="muted small">
+    CURRENT INSTRUCTION
+  </div>
 
-<h1 id="taskTitle"></h1>
-
-<div class="photo">
-INSTRUCTION IMAGE / DIAGRAM
-</div>
+  <h1 id="taskTitle"></h1>
 
 
-<div class="instructions">
-
-<h3>Instructions</h3>
-
-<ol id="instructions"></ol>
-
-</div>
+  <div class="photo">
+    INSTRUCTION IMAGE / DIAGRAM
+  </div>
 
 
-<div class="kpis">
+  <div class="instructions">
 
-<div class="kpi">
-<span class="muted small">Expected</span>
-<strong id="expected"></strong>
-</div>
+    <h3>Instructions</h3>
 
-<div class="kpi">
-<span class="muted small">Step</span>
-<strong id="stepNum"></strong>
-</div>
+    <ol id="instructions"></ol>
 
-<div class="kpi">
-<span class="muted small">Total Time</span>
-<strong id="jobTimer">—</strong>
-</div>
-
-</div>
+  </div>
 
 
-<button class="primary" id="done">
-Mark Step Done
-</button>
+  <div class="kpis">
 
-<div class="notice" id="message"></div>
+    <div class="kpi">
+
+      <span class="muted small">
+        Expected
+      </span>
+
+      <strong id="expected"></strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <span class="muted small">
+        Step Time
+      </span>
+
+      <strong id="stepTimer"></strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <span class="muted small">
+        Total Time
+      </span>
+
+      <strong id="jobTimer"></strong>
+
+    </div>
+
+  </div>
+
+
+  <div class="button-row">
+
+    <button
+      class="secondary"
+      id="previous">
+
+      ← Back One Step
+
+    </button>
+
+
+    <button
+      class="primary"
+      id="done">
+
+      Mark Step Done
+
+    </button>
+
+  </div>
+
+
+  <div
+    class="notice"
+    id="message"
+    aria-live="polite">
+  </div>
 
 </main>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     MANAGER DETAIL
+========================= -->
+
+<section
+  id="managerDetail"
+  class="hidden">
+
+<button
+  class="back"
+  id="managerBack">
+
+  ← Back to Manager Overview
+
+</button>
+
+
+<div class="card">
+
+  <div class="muted small">
+    MANAGER WORK ORDER REVIEW
+  </div>
+
+  <h1 id="managerJobTitle"></h1>
+
+  <div
+    class="muted"
+    id="managerJobDesc">
+  </div>
+
+
+  <div class="kpis">
+
+    <div class="kpi">
+
+      <span class="muted small">
+        Total Time
+      </span>
+
+      <strong id="managerTotalTime"></strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <span class="muted small">
+        Progress
+      </span>
+
+      <strong id="managerProgress"></strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <span class="muted small">
+        Technician
+      </span>
+
+      <strong style="font-size:15px">
+        Dominic Knight
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <div style="margin-top:25px;overflow:auto">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>Step</th>
+          <th>Task</th>
+          <th>Estimated</th>
+          <th>Actual</th>
+          <th>Difference</th>
+          <th>Status</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="managerStepRows"></tbody>
+
+    </table>
+
+  </div>
 
 </div>
 
@@ -708,21 +960,25 @@ ins:[
 ];
 
 
+
 /* =========================
    SAVED DATA
 ========================= */
 
-let progress=
+let progress =
 JSON.parse(
 localStorage.getItem("starlingDemoProgress") || "{}"
 );
 
-let timing=
+let timing =
 JSON.parse(
 localStorage.getItem("starlingDemoTiming") || "{}"
 );
 
-let selected=null;
+let selected = null;
+
+let managerSelected = null;
+
 
 
 function save(){
@@ -740,41 +996,34 @@ JSON.stringify(timing)
 }
 
 
+
 /* =========================
-   TIMER
+   TIMER HELPERS
 ========================= */
-
-function elapsedMs(id){
-
-const t=timing[id];
-
-if(!t || !t.startedAt){
-return 0;
-}
-
-const end=t.completedAt || Date.now();
-
-return end-t.startedAt;
-
-}
-
 
 function formatTime(ms){
 
-if(!ms){
+if(ms === null || ms === undefined){
 return "—";
 }
 
-const totalSeconds=
-Math.floor(ms/1000);
+const totalSeconds =
+Math.max(
+0,
+Math.floor(ms/1000)
+);
 
-const hours=
-Math.floor(totalSeconds/3600);
+const hours =
+Math.floor(
+totalSeconds/3600
+);
 
-const minutes=
-Math.floor((totalSeconds%3600)/60);
+const minutes =
+Math.floor(
+(totalSeconds%3600)/60
+);
 
-const seconds=
+const seconds =
 totalSeconds%60;
 
 
@@ -789,13 +1038,410 @@ return `${minutes}m ${String(seconds).padStart(2,"0")}s`;
 }
 
 
-function timeFor(id){
+
+/* =========================
+   WORK ORDER TIME
+========================= */
+
+function elapsedWorkOrderMs(id){
+
+const t =
+timing[id];
+
+if(
+!t ||
+!t.startedAt
+){
+
+return null;
+
+}
+
+const end =
+t.completedAt ||
+Date.now();
+
+return end -
+t.startedAt;
+
+}
+
+
+function workOrderTime(id){
 
 return formatTime(
-elapsedMs(id)
+elapsedWorkOrderMs(id)
 );
 
 }
+
+
+
+/* =========================
+   STEP TIME
+========================= */
+
+function getStepElapsedMs(
+jobId,
+stepIndex
+){
+
+const jobTiming =
+timing[jobId];
+
+if(
+!jobTiming ||
+!jobTiming.steps
+){
+
+return null;
+
+}
+
+
+const step =
+jobTiming.steps[stepIndex];
+
+if(!step){
+
+return null;
+
+}
+
+
+/*
+elapsedMs contains time from
+previous attempts if technician
+went back to this step.
+*/
+
+let total =
+step.elapsedMs || 0;
+
+
+/*
+If currently running, add
+current session time.
+*/
+
+if(step.startedAt){
+
+total +=
+Date.now() -
+step.startedAt;
+
+}
+
+
+return total;
+
+}
+
+
+
+function stepTime(
+jobId,
+stepIndex
+){
+
+return formatTime(
+getStepElapsedMs(
+jobId,
+stepIndex
+)
+);
+
+}
+
+
+
+/* =========================
+   EXPECTED TIME
+========================= */
+
+function expectedMinutes(
+timeText
+){
+
+const match =
+String(timeText)
+.match(/(\d+(?:\.\d+)?)/);
+
+if(!match){
+return 0;
+}
+
+return Number(
+match[1]
+);
+
+}
+
+
+
+/* =========================
+   DIFFERENCE
+========================= */
+
+function timeDifference(
+actualMs,
+expectedText
+){
+
+if(
+actualMs === null ||
+actualMs === undefined
+){
+
+return "—";
+
+}
+
+
+const expectedMs =
+expectedMinutes(
+expectedText
+) *
+60 *
+1000;
+
+
+const difference =
+actualMs -
+expectedMs;
+
+
+if(
+Math.abs(difference) <
+1000
+){
+
+return "On estimate";
+
+}
+
+
+if(difference > 0){
+
+return `+${formatTime(difference)}`;
+
+}
+
+
+return `-${formatTime(Math.abs(difference))}`;
+
+}
+
+
+
+/* =========================
+   START WORK ORDER
+========================= */
+
+function startWorkOrder(job){
+
+const id =
+job.id;
+
+let p =
+progress[id] || 0;
+
+
+if(
+p >=
+job.steps.length
+){
+
+return;
+
+}
+
+
+if(!timing[id]){
+
+timing[id] = {
+
+startedAt:
+Date.now(),
+
+completedAt:
+null,
+
+steps:[]
+
+};
+
+}
+
+
+if(
+!timing[id].steps
+){
+
+timing[id].steps = [];
+
+}
+
+
+if(
+!timing[id].startedAt
+){
+
+timing[id].startedAt =
+Date.now();
+
+}
+
+
+/*
+Start current step
+*/
+
+if(
+!timing[id].steps[p]
+){
+
+timing[id].steps[p] = {
+
+startedAt:
+Date.now(),
+
+elapsedMs:0
+
+};
+
+}
+
+else if(
+!timing[id]
+.steps[p]
+.startedAt
+){
+
+timing[id]
+.steps[p]
+.startedAt =
+Date.now();
+
+}
+
+
+save();
+
+}
+
+
+
+/* =========================
+   STOP STEP TIMER
+========================= */
+
+function stopStepTimer(
+jobId,
+stepIndex
+){
+
+const t =
+timing[jobId];
+
+if(
+!t ||
+!t.steps ||
+!t.steps[stepIndex]
+){
+
+return;
+
+}
+
+
+const step =
+t.steps[stepIndex];
+
+
+if(step.startedAt){
+
+step.elapsedMs =
+(step.elapsedMs || 0) +
+(
+Date.now() -
+step.startedAt
+);
+
+step.startedAt =
+null;
+
+}
+
+}
+
+
+
+/* =========================
+   START STEP TIMER
+========================= */
+
+function startStepTimer(
+jobId,
+stepIndex
+){
+
+if(
+!timing[jobId]
+){
+
+timing[jobId] = {
+
+startedAt:
+Date.now(),
+
+completedAt:null,
+
+steps:[]
+
+};
+
+}
+
+
+if(
+!timing[jobId].steps
+){
+
+timing[jobId].steps =
+[];
+
+}
+
+
+if(
+!timing[jobId]
+.steps[stepIndex]
+){
+
+timing[jobId]
+.steps[stepIndex] = {
+
+startedAt:
+Date.now(),
+
+elapsedMs:0
+
+};
+
+}
+
+else{
+
+timing[jobId]
+.steps[stepIndex]
+.startedAt =
+Date.now();
+
+}
+
+}
+
 
 
 /* =========================
@@ -804,46 +1450,66 @@ elapsedMs(id)
 
 function renderHome(){
 
-const box=
-document.getElementById("workOrders");
+const box =
+document.getElementById(
+"workOrders"
+);
 
-box.innerHTML="";
+box.innerHTML = "";
 
 
 jobs.forEach(j=>{
 
-let p=
+let p =
 progress[j.id] || 0;
 
-let pct=
+
+let pct =
 Math.round(
-p/j.steps.length*100
+p /
+j.steps.length *
+100
 );
+
 
 let status;
 
-if(p>=j.steps.length){
 
-status="Complete";
+if(
+p >=
+j.steps.length
+){
+
+status =
+"Complete";
 
 }
-else if(p>0 || timing[j.id]){
 
-status="In Progress";
+else if(
+timing[j.id]
+){
+
+status =
+"In Progress";
 
 }
+
 else{
 
-status="Not Started";
+status =
+"Not Started";
 
 }
+
 
 
 box.insertAdjacentHTML(
 "beforeend",
 
 `
-<button class="wo" data-id="${j.id}">
+<button
+class="wo"
+data-id="${j.id}">
 
 <div class="row">
 
@@ -860,8 +1526,6 @@ ${j.name}
 </div>
 
 
-<div>
-
 <div style="text-align:right">
 
 <span class="status">
@@ -869,9 +1533,7 @@ ${status}
 </span>
 
 <div class="time-display">
-${timeFor(j.id)}
-</div>
-
+${workOrderTime(j.id)}
 </div>
 
 </div>
@@ -893,7 +1555,9 @@ style="width:${pct}%">
 class="muted small"
 style="margin-top:7px">
 
-${p} / ${j.steps.length} steps complete · ${j.customer}
+${p} / ${j.steps.length}
+steps complete ·
+${j.customer}
 
 </div>
 
@@ -905,87 +1569,119 @@ ${p} / ${j.steps.length} steps complete · ${j.customer}
 });
 
 
-box
+document
 .querySelectorAll(".wo")
-.forEach(b=>{
+.forEach(button=>{
 
-b.onclick=
+button.onclick =
 ()=>openJob(
-b.dataset.id
+button.dataset.id
 );
 
 });
 
 
+
+/* COMPLETED STEPS */
+
 document
-.getElementById("completedSteps")
-.textContent=
+.getElementById(
+"completedSteps"
+)
+.textContent =
 
 jobs.reduce(
-(a,j)=>
-a+(progress[j.id]||0),
+(total,j)=>
+total +
+(progress[j.id] || 0),
 0
 );
 
 
+
+/* ACTIVE JOBS */
+
 document
-.getElementById("activeJobs")
-.textContent=
+.getElementById(
+"activeJobs"
+)
+.textContent =
 
 jobs.filter(j=>{
 
-let p=
-progress[j.id]||0;
+let p =
+progress[j.id] || 0;
 
 return (
 timing[j.id] &&
-p<j.steps.length
+p <
+j.steps.length
 );
 
 }).length;
 
 
+
 /* MANAGER TABLE */
 
 document
-.getElementById("managerRows")
-.innerHTML=
+.getElementById(
+"managerRows"
+)
+.innerHTML =
 
 jobs.map(j=>{
 
-let p=
-progress[j.id]||0;
+let p =
+progress[j.id] || 0;
+
 
 let status;
 
-if(p>=j.steps.length){
 
-status="Complete";
+if(
+p >=
+j.steps.length
+){
+
+status =
+"Complete";
 
 }
-else if(timing[j.id]){
 
-status="Working";
+else if(
+timing[j.id]
+){
+
+status =
+"Working";
 
 }
+
 else{
 
-status="Not Started";
+status =
+"Not Started";
 
 }
 
 
 let currentStep;
 
-if(p>=j.steps.length){
 
-currentStep=
+if(
+p >=
+j.steps.length
+){
+
+currentStep =
 "All steps complete";
 
 }
+
 else{
 
-currentStep=
+currentStep =
 j.steps[p].name;
 
 }
@@ -1000,7 +1696,15 @@ Dominic Knight
 </td>
 
 <td>
+
+<button
+class="manager-link"
+data-manager-id="${j.id}">
+
 ${j.id}
+
+</button>
+
 </td>
 
 <td>
@@ -1012,7 +1716,7 @@ ${status}
 </td>
 
 <td>
-${timeFor(j.id)}
+${workOrderTime(j.id)}
 </td>
 
 </tr>
@@ -1021,53 +1725,49 @@ ${timeFor(j.id)}
 
 }).join("");
 
+
+
+document
+.querySelectorAll(
+".manager-link"
+)
+.forEach(button=>{
+
+button.onclick =
+()=>openManagerJob(
+button.dataset.managerId
+);
+
+});
+
 }
 
 
+
 /* =========================
-   OPEN WORK ORDER
+   OPEN TECHNICIAN JOB
 ========================= */
 
 function openJob(id){
 
-selected=
+selected =
 jobs.find(
-j=>j.id===id
+j=>j.id === id
 );
 
 
-let p=
-progress[selected.id] || 0;
-
-
-/*
-Timer begins the FIRST time
-the work order is opened.
-*/
-
-if(
-p<selected.steps.length &&
-(
-!timing[selected.id] ||
-!timing[selected.id].startedAt
-)
-){
-
-timing[selected.id]={
-
-startedAt:Date.now(),
-
-completedAt:null
-
-};
-
-save();
-
-}
+startWorkOrder(
+selected
+);
 
 
 document
 .getElementById("home")
+.classList.add("hidden");
+
+
+document
+.getElementById("managerDetail")
 .classList.add("hidden");
 
 
@@ -1081,44 +1781,74 @@ renderJob();
 }
 
 
+
 /* =========================
-   WORK ORDER PAGE
+   RENDER TECHNICIAN JOB
 ========================= */
 
 function renderJob(){
 
-let p=
+let p =
 progress[selected.id] || 0;
 
 
 document
 .getElementById("jobTitle")
-.textContent=
+.textContent =
 selected.id;
 
 
 document
 .getElementById("jobDesc")
-.textContent=
+.textContent =
 `${selected.name} · ${selected.customer}`;
+
 
 
 /* STEP LIST */
 
 document
 .getElementById("steps")
-.innerHTML=
+.innerHTML =
 
 selected.steps.map(
-(s,i)=>`
+(s,i)=>{
+
+let statusText;
+
+
+if(i < p){
+
+statusText =
+`Completed · ${stepTime(selected.id,i)}`;
+
+}
+
+else if(i === p){
+
+statusText =
+`Current · ${stepTime(selected.id,i)}`;
+
+}
+
+else{
+
+statusText =
+"Locked";
+
+}
+
+
+return `
 
 <div
-class="step
-${i<p
+class="step ${
+i<p
 ?"done"
 :i===p
 ?"current"
-:""}">
+:""
+}">
 
 <span class="dot"></span>
 
@@ -1133,48 +1863,44 @@ ${i+1}. ${s.name}
 </div>
 
 <div class="muted small">
-
-${i<p
-?"Completed"
-:i===p
-?"Current step"
-:"Locked"}
-
+${statusText}
 </div>
 
 </div>
 
 </div>
 
-`
-).join("");
+`;
+
+}).join("");
 
 
-/* LIVE TOTAL TIMER */
 
 document
 .getElementById("jobTimer")
-.textContent=
-timeFor(selected.id);
+.textContent =
+workOrderTime(
+selected.id
+);
 
 
-/* CHECK COMPLETE */
 
-let complete=
-p>=selected.steps.length;
+/* WORK ORDER COMPLETE */
 
-
-if(complete){
+if(
+p >=
+selected.steps.length
+){
 
 document
 .getElementById("taskTitle")
-.textContent=
+.textContent =
 "Work Order Complete";
 
 
 document
 .getElementById("instructions")
-.innerHTML=
+.innerHTML =
 
 `
 <li>
@@ -1183,40 +1909,47 @@ All work-order steps have been completed.
 
 <li>
 Total completion time:
-<strong>${timeFor(selected.id)}</strong>
+<strong>
+${workOrderTime(selected.id)}
+</strong>
 </li>
 `;
 
 
 document
 .getElementById("expected")
-.textContent=
+.textContent =
 "Done";
 
 
 document
-.getElementById("stepNum")
-.textContent=
-selected.steps.length+
-"/"+
-selected.steps.length;
+.getElementById("stepTimer")
+.textContent =
+"Done";
 
 
 document
 .getElementById("done")
-.disabled=true;
+.disabled =
+true;
 
 
 document
 .getElementById("done")
-.textContent=
+.textContent =
 "Work Order Complete";
 
 
 document
+.getElementById("previous")
+.disabled =
+false;
+
+
+document
 .getElementById("message")
-.textContent=
-"Completion time recorded.";
+.textContent =
+"Completion recorded. You can go back one step if the last step was completed by mistake.";
 
 
 return;
@@ -1224,21 +1957,22 @@ return;
 }
 
 
+
 /* CURRENT STEP */
 
-let s=
+let s =
 selected.steps[p];
 
 
 document
 .getElementById("taskTitle")
-.textContent=
+.textContent =
 s.name;
 
 
 document
 .getElementById("instructions")
-.innerHTML=
+.innerHTML =
 
 s.ins.map(
 x=>`<li>${x}</li>`
@@ -1247,65 +1981,97 @@ x=>`<li>${x}</li>`
 
 document
 .getElementById("expected")
-.textContent=
+.textContent =
 s.time;
 
 
 document
-.getElementById("stepNum")
-.textContent=
-(p+1)+
-"/"+
-selected.steps.length;
+.getElementById("stepTimer")
+.textContent =
+stepTime(
+selected.id,
+p
+);
 
 
 document
 .getElementById("done")
-.disabled=false;
+.disabled =
+false;
 
 
 document
 .getElementById("done")
-.textContent=
+.textContent =
 "Mark Step Done";
+
+
+/*
+Cannot go back from Step 1
+*/
+
+document
+.getElementById("previous")
+.disabled =
+p === 0;
 
 
 document
 .getElementById("message")
-.textContent=
-
+.textContent =
 `Step ${p+1} of ${selected.steps.length}`;
 
 }
 
 
+
 /* =========================
-   COMPLETE STEP
+   MARK STEP DONE
 ========================= */
 
 document
 .getElementById("done")
-.onclick=()=>{
+.onclick = ()=>{
 
 if(!selected){
 return;
 }
 
 
-let p=
+let p =
 progress[selected.id] || 0;
 
 
-if(p<selected.steps.length){
+if(
+p >=
+selected.steps.length
+){
 
-progress[selected.id]=
-p+1;
+return;
+
+}
 
 
 /*
-If this was the LAST step,
-record the completion time.
+Stop current step timer
 */
+
+stopStepTimer(
+selected.id,
+p
+);
+
+
+/*
+Advance
+*/
+
+progress[selected.id] =
+p + 1;
+
+
+
+/* FINAL STEP */
 
 if(
 progress[selected.id]
@@ -1313,22 +2079,24 @@ progress[selected.id]
 selected.steps.length
 ){
 
-if(!timing[selected.id]){
-
-timing[selected.id]={
-
-startedAt:Date.now(),
-
-completedAt:null
-
-};
+timing[selected.id]
+.completedAt =
+Date.now();
 
 }
 
 
-timing[selected.id]
-.completedAt=
-Date.now();
+/* START NEXT STEP */
+
+else{
+
+let next =
+progress[selected.id];
+
+startStepTimer(
+selected.id,
+next
+);
 
 }
 
@@ -1337,18 +2105,304 @@ save();
 
 renderJob();
 
+};
+
+
+
+/* =========================
+   GO BACK ONE STEP
+========================= */
+
+document
+.getElementById("previous")
+.onclick = ()=>{
+
+if(!selected){
+return;
 }
+
+
+let p =
+progress[selected.id] || 0;
+
+
+/*
+If already at Step 1,
+there is nowhere to go.
+*/
+
+if(p <= 0){
+
+return;
+
+}
+
+
+/*
+If job was marked complete,
+reopen it.
+*/
+
+if(
+timing[selected.id]
+){
+
+timing[selected.id]
+.completedAt =
+null;
+
+}
+
+
+/*
+If there is a currently
+running step, stop it first.
+*/
+
+if(
+p <
+selected.steps.length
+){
+
+stopStepTimer(
+selected.id,
+p
+);
+
+}
+
+
+/*
+Move backward one step
+*/
+
+let previousStep =
+p - 1;
+
+
+progress[selected.id] =
+previousStep;
+
+
+/*
+Resume timing previous step.
+
+The old elapsed time remains
+stored and the new time gets
+added to it.
+*/
+
+startStepTimer(
+selected.id,
+previousStep
+);
+
+
+save();
+
+renderJob();
 
 };
 
 
+
 /* =========================
-   BACK BUTTON
+   MANAGER DETAIL
+========================= */
+
+function openManagerJob(id){
+
+managerSelected =
+jobs.find(
+j=>j.id === id
+);
+
+
+renderManagerJob();
+
+
+document
+.getElementById("home")
+.classList.add("hidden");
+
+
+document
+.getElementById("job")
+.classList.add("hidden");
+
+
+document
+.getElementById("managerDetail")
+.classList.remove("hidden");
+
+}
+
+
+
+/* =========================
+   RENDER MANAGER DETAIL
+========================= */
+
+function renderManagerJob(){
+
+if(!managerSelected){
+return;
+}
+
+
+const job =
+managerSelected;
+
+
+const id =
+job.id;
+
+
+const p =
+progress[id] || 0;
+
+
+document
+.getElementById(
+"managerJobTitle"
+)
+.textContent =
+id;
+
+
+document
+.getElementById(
+"managerJobDesc"
+)
+.textContent =
+`${job.name} · ${job.customer}`;
+
+
+document
+.getElementById(
+"managerTotalTime"
+)
+.textContent =
+workOrderTime(id);
+
+
+document
+.getElementById(
+"managerProgress"
+)
+.textContent =
+`${p}/${job.steps.length}`;
+
+
+
+document
+.getElementById(
+"managerStepRows"
+)
+.innerHTML =
+
+job.steps.map(
+(step,index)=>{
+
+const actualMs =
+getStepElapsedMs(
+id,
+index
+);
+
+
+const actual =
+formatTime(
+actualMs
+);
+
+
+const difference =
+timeDifference(
+actualMs,
+step.time
+);
+
+
+let status;
+
+
+if(index < p){
+
+status =
+"Complete";
+
+}
+
+else if(
+index === p &&
+timing[id] &&
+p <
+job.steps.length
+){
+
+status =
+"In Progress";
+
+}
+
+else{
+
+status =
+"Not Started";
+
+}
+
+
+return `
+
+<tr>
+
+<td>
+${index+1}
+</td>
+
+<td>
+<strong>
+${step.name}
+</strong>
+</td>
+
+<td>
+${step.time}
+</td>
+
+<td>
+${actual}
+</td>
+
+<td>
+${difference}
+</td>
+
+<td>
+${status}
+</td>
+
+</tr>
+
+`;
+
+}
+
+).join("");
+
+}
+
+
+
+/* =========================
+   BACK TO HOME
 ========================= */
 
 document
 .getElementById("back")
-.onclick=()=>{
+.onclick = ()=>{
 
 document
 .getElementById("job")
@@ -1365,33 +2419,100 @@ renderHome();
 };
 
 
+
+/* =========================
+   MANAGER BACK
+========================= */
+
+document
+.getElementById("managerBack")
+.onclick = ()=>{
+
+managerSelected =
+null;
+
+
+document
+.getElementById("managerDetail")
+.classList.add("hidden");
+
+
+document
+.getElementById("home")
+.classList.remove("hidden");
+
+
+renderHome();
+
+};
+
+
+
 /* =========================
    LIVE UPDATE
 ========================= */
 
-/*
-Updates the timer every second
-without refreshing the page.
-*/
-
 setInterval(()=>{
 
+
+/* TECHNICIAN SCREEN */
+
 if(
+selected &&
 !document
 .getElementById("job")
 .classList.contains("hidden")
-&&
-selected
 ){
+
+let p =
+progress[selected.id] || 0;
+
 
 document
 .getElementById("jobTimer")
-.textContent=
-timeFor(selected.id);
+.textContent =
+workOrderTime(
+selected.id
+);
+
+
+if(
+p <
+selected.steps.length
+){
+
+document
+.getElementById("stepTimer")
+.textContent =
+stepTime(
+selected.id,
+p
+);
 
 }
 
-else if(
+}
+
+
+
+/* MANAGER DETAIL */
+
+if(
+managerSelected &&
+!document
+.getElementById("managerDetail")
+.classList.contains("hidden")
+){
+
+renderManagerJob();
+
+}
+
+
+
+/* HOME */
+
+if(
 !document
 .getElementById("home")
 .classList.contains("hidden")
@@ -1401,10 +2522,14 @@ renderHome();
 
 }
 
+
 },1000);
 
 
-/* INITIAL LOAD */
+
+/* =========================
+   INITIAL LOAD
+========================= */
 
 renderHome();
 
