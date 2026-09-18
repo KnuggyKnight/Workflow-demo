@@ -4,208 +4,1411 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Starling Workflow Demo</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f6f8;color:#17202a}
-button,input{font:inherit}button{cursor:pointer}.app{max-width:1100px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}.brand{font-weight:800;font-size:22px}.muted{color:#68737d}.badge{padding:6px 10px;border-radius:999px;background:#e8eef3;font-size:12px;font-weight:700}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:white;border:1px solid #dce2e7;border-radius:14px;padding:20px;box-shadow:0 2px 8px #00000008}
-h1{font-size:28px;margin:0 0 8px}h2{font-size:20px;margin:0 0 8px}h3{font-size:16px;margin:0}.small{font-size:13px}
-.wo{width:100%;text-align:left;border:1px solid #dce2e7;background:white;border-radius:12px;padding:17px;margin-bottom:10px}.wo:hover{background:#f8fafb}.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.wo-title{font-weight:750}.status{font-size:12px;font-weight:700;padding:5px 9px;border-radius:999px;background:#eef2f5}.progress{height:7px;background:#e9edf0;border-radius:10px;overflow:hidden;margin-top:13px}.bar{height:100%;background:#263746;border-radius:10px}
-.hidden{display:none!important}.back{border:0;background:transparent;padding:0 0 14px;font-weight:700}.steps{margin-top:20px}.step{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #edf0f2}.dot{width:10px;height:10px;border-radius:50%;background:#cbd3d9;margin-top:5px;flex:none}.done .dot{background:#263746}.current .dot{box-shadow:0 0 0 4px #e5eaee;background:#263746}.done .stepname{text-decoration:line-through;color:#78838c}
-.instructions{background:#f6f8f9;border-radius:12px;padding:18px;margin:18px 0}.instructions li{margin:9px 0;line-height:1.45}.photo{height:170px;border-radius:12px;background:linear-gradient(135deg,#dfe5e9,#aeb8bf);display:flex;align-items:center;justify-content:center;color:#43515c;font-weight:800;margin-bottom:18px}
-.primary{width:100%;border:0;background:#17202a;color:white;padding:14px;border-radius:10px;font-weight:800}.primary:disabled{opacity:.5;cursor:not-allowed}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.kpi{background:#f6f8f9;border-radius:10px;padding:13px}.kpi strong{display:block;font-size:20px;margin-top:4px}
-.tabs{display:flex;gap:8px;margin-bottom:18px}.tab{border:1px solid #dce2e7;background:white;padding:9px 13px;border-radius:9px;font-weight:700}.tab.active{background:#17202a;color:white}
-table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px 8px;border-bottom:1px solid #edf0f2;font-size:14px}
-.notice{margin-top:12px;color:#4f5c65;font-size:13px}
-@media(max-width:760px){.app{padding:15px}.grid{grid-template-columns:1fr}.top{align-items:flex-start}.kpis{grid-template-columns:1fr 1fr}.kpis .kpi:last-child{grid-column:span 2}}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:#f4f6f8;
+  color:#17202a
+}
+button,input{font:inherit}
+button{cursor:pointer}
+
+.app{
+  max-width:1100px;
+  margin:auto;
+  padding:24px
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-bottom:24px
+}
+
+.brand{
+  font-weight:800;
+  font-size:22px
+}
+
+.muted{color:#68737d}
+
+.badge{
+  padding:6px 10px;
+  border-radius:999px;
+  background:#e8eef3;
+  font-size:12px;
+  font-weight:700
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px
+}
+
+.card{
+  background:white;
+  border:1px solid #dce2e7;
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 2px 8px #00000008
+}
+
+h1{
+  font-size:28px;
+  margin:0 0 8px
+}
+
+h2{
+  font-size:20px;
+  margin:0 0 8px
+}
+
+h3{
+  font-size:16px;
+  margin:0
+}
+
+.small{font-size:13px}
+
+.wo{
+  width:100%;
+  text-align:left;
+  border:1px solid #dce2e7;
+  background:white;
+  border-radius:12px;
+  padding:17px;
+  margin-bottom:10px
+}
+
+.wo:hover{background:#f8fafb}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center
+}
+
+.wo-title{font-weight:750}
+
+.status{
+  font-size:12px;
+  font-weight:700;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#eef2f5
+}
+
+.time-display{
+  font-size:13px;
+  font-weight:700;
+  margin-top:8px;
+  text-align:right
+}
+
+.progress{
+  height:7px;
+  background:#e9edf0;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:13px
+}
+
+.bar{
+  height:100%;
+  background:#263746;
+  border-radius:10px
+}
+
+.hidden{display:none!important}
+
+.back{
+  border:0;
+  background:transparent;
+  padding:0 0 14px;
+  font-weight:700
+}
+
+.steps{margin-top:20px}
+
+.step{
+  display:flex;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #edf0f2
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#cbd3d9;
+  margin-top:5px;
+  flex:none
+}
+
+.done .dot{background:#263746}
+
+.current .dot{
+  box-shadow:0 0 0 4px #e5eaee;
+  background:#263746
+}
+
+.done .stepname{
+  text-decoration:line-through;
+  color:#78838c
+}
+
+.instructions{
+  background:#f6f8f9;
+  border-radius:12px;
+  padding:18px;
+  margin:18px 0
+}
+
+.instructions li{
+  margin:9px 0;
+  line-height:1.45
+}
+
+.photo{
+  height:170px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#dfe5e9,#aeb8bf);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#43515c;
+  font-weight:800;
+  margin-bottom:18px
+}
+
+.primary{
+  width:100%;
+  border:0;
+  background:#17202a;
+  color:white;
+  padding:14px;
+  border-radius:10px;
+  font-weight:800
+}
+
+.primary:disabled{
+  opacity:.5;
+  cursor:not-allowed
+}
+
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:16px
+}
+
+.kpi{
+  background:#f6f8f9;
+  border-radius:10px;
+  padding:13px
+}
+
+.kpi strong{
+  display:block;
+  font-size:20px;
+  margin-top:4px
+}
+
+table{
+  width:100%;
+  border-collapse:collapse
+}
+
+th,td{
+  text-align:left;
+  padding:12px 8px;
+  border-bottom:1px solid #edf0f2;
+  font-size:14px
+}
+
+.notice{
+  margin-top:12px;
+  color:#4f5c65;
+  font-size:13px
+}
+
+@media(max-width:760px){
+  .app{padding:15px}
+  .grid{grid-template-columns:1fr}
+  .top{align-items:flex-start}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpis .kpi:last-child{grid-column:span 2}
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
-<header class="top"><div><div class="brand">STARLING WORKFLOW</div><div class="muted small">Technician work-order tracking demo</div></div><span class="badge">Demo Mode</span></header>
+
+<header class="top">
+  <div>
+    <div class="brand">STARLING WORKFLOW</div>
+    <div class="muted small">Technician work-order tracking demo</div>
+  </div>
+
+  <span class="badge">Demo Mode</span>
+</header>
+
+
+<!-- HOME PAGE -->
 
 <section id="home">
-  <div class="grid">
-    <div class="card">
-      <h2>Technician</h2>
-      <p class="muted small">Signed in as <strong>Dominic Knight</strong></p>
-      <div id="workOrders"></div>
-    </div>
-    <div class="card">
-      <h2>Manager Overview</h2>
-      <p class="muted small">Live-style view of technician progress</p>
-      <div class="kpis">
-        <div class="kpi"><span class="muted small">Active Jobs</span><strong id="activeJobs">2</strong></div>
-        <div class="kpi"><span class="muted small">Completed Steps</span><strong id="completedSteps">2</strong></div>
-        <div class="kpi"><span class="muted small">Technicians</span><strong>4</strong></div>
-      </div>
-      <div style="margin-top:20px;overflow:auto">
-        <table><thead><tr><th>Technician</th><th>Work Order</th><th>Current Step</th><th>Status</th></tr></thead>
-        <tbody id="managerRows"></tbody></table>
-      </div>
-    </div>
-  </div>
+
+<div class="grid">
+
+<div class="card">
+
+<h2>Technician</h2>
+
+<p class="muted small">
+Signed in as <strong>Dominic Knight</strong>
+</p>
+
+<div id="workOrders"></div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Manager Overview</h2>
+
+<p class="muted small">
+Live-style view of technician progress
+</p>
+
+<div class="kpis">
+
+<div class="kpi">
+<span class="muted small">Active Jobs</span>
+<strong id="activeJobs">0</strong>
+</div>
+
+<div class="kpi">
+<span class="muted small">Completed Steps</span>
+<strong id="completedSteps">0</strong>
+</div>
+
+<div class="kpi">
+<span class="muted small">Technicians</span>
+<strong>4</strong>
+</div>
+
+</div>
+
+
+<div style="margin-top:20px;overflow:auto">
+
+<table>
+
+<thead>
+<tr>
+<th>Technician</th>
+<th>Work Order</th>
+<th>Current Step</th>
+<th>Status</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody id="managerRows"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
+
+
+<!-- JOB PAGE -->
 
 <section id="job" class="hidden">
-  <button class="back" id="back">← Back to Work Orders</button>
-  <div class="grid">
-    <aside class="card"><div class="muted small">WORK ORDER</div><h2 id="jobTitle"></h2><div class="muted small" id="jobDesc"></div><div class="steps" id="steps"></div></aside>
-    <main class="card">
-      <div class="muted small">CURRENT INSTRUCTION</div><h1 id="taskTitle"></h1>
-      <div class="photo">INSTRUCTION IMAGE / DIAGRAM</div>
-      <div class="instructions"><h3>Instructions</h3><ol id="instructions"></ol></div>
-      <div class="kpis"><div class="kpi"><span class="muted small">Expected</span><strong id="expected"></strong></div><div class="kpi"><span class="muted small">Step</span><strong id="stepNum"></strong></div><div class="kpi"><span class="muted small">Technician</span><strong style="font-size:15px">Dominic</strong></div></div>
-      <button class="primary" id="done">Mark Step Done</button>
-      <div class="notice" id="message" aria-live="polite"></div>
-    </main>
-  </div>
-</section>
+
+<button class="back" id="back">
+← Back to Work Orders
+</button>
+
+<div class="grid">
+
+<aside class="card">
+
+<div class="muted small">
+WORK ORDER
 </div>
+
+<h2 id="jobTitle"></h2>
+
+<div class="muted small" id="jobDesc"></div>
+
+<div class="steps" id="steps"></div>
+
+</aside>
+
+
+<main class="card">
+
+<div class="muted small">
+CURRENT INSTRUCTION
+</div>
+
+<h1 id="taskTitle"></h1>
+
+<div class="photo">
+INSTRUCTION IMAGE / DIAGRAM
+</div>
+
+
+<div class="instructions">
+
+<h3>Instructions</h3>
+
+<ol id="instructions"></ol>
+
+</div>
+
+
+<div class="kpis">
+
+<div class="kpi">
+<span class="muted small">Expected</span>
+<strong id="expected"></strong>
+</div>
+
+<div class="kpi">
+<span class="muted small">Step</span>
+<strong id="stepNum"></strong>
+</div>
+
+<div class="kpi">
+<span class="muted small">Total Time</span>
+<strong id="jobTimer">—</strong>
+</div>
+
+</div>
+
+
+<button class="primary" id="done">
+Mark Step Done
+</button>
+
+<div class="notice" id="message"></div>
+
+</main>
+
+</div>
+
+</section>
+
+</div>
+
+
+
 <script>
+
+/* =========================
+   WORK ORDERS
+========================= */
+
 const jobs=[
+
 {
-  id:"WO-00001",
-  name:"Electronics Box",
-  customer:"Starling Systems",
-  steps:[
+id:"WO-00001",
+name:"Electronics Box",
+customer:"Starling Systems",
 
-    {
-      name:"Gather Required Tools",
-      time:"5 min",
-      ins:[
-        "Gather a rivet gun.",
-        "Gather the required rivets.",
-        "Gather the required screwdrivers and drivers.",
-        "Gather measuring tools or placement templates.",
-        "Gather cleaning supplies for the adhesive stud mounting surfaces.",
-        "Gather scissors or the approved cutting tool for the foam seals.",
-        "Verify all required tools are available before beginning assembly."
-      ]
-    },
+steps:[
 
-    {
-      name:"Lid - Install Acrylic Back Plate",
-      time:"8 min",
-      ins:[
-        "Position the acrylic back plate on the inside of the lid.",
-        "Align the acrylic back plate with the mounting holes.",
-        "Install the required rivets using the rivet gun.",
-        "Verify the acrylic back plate is secure."
-      ]
-    },
-
-    {
-      name:"Lid - Install Clips",
-      time:"5 min",
-      ins:[
-        "Position the clips in their designated locations on the lid.",
-        "Install the clips using the required hardware.",
-        "Verify the clips are secure and correctly oriented.",
-        "Verify the clips will properly engage with the main frame."
-      ]
-    },
-
-    {
-      name:"Main Frame - Install Adhesive Studs",
-      time:"10 min",
-      ins:[
-        "Clean the adhesive stud mounting locations on the bottom of the main frame.",
-        "Verify the correct location for each adhesive stud.",
-        "Install the adhesive studs.",
-        "Verify all studs are properly positioned and securely attached."
-      ]
-    },
-
-    {
-      name:"Main Frame - Install Fans and Fan Guards",
-      time:"15 min",
-      ins:[
-        "Position all four fans in their designated locations.",
-        "Verify the correct fan orientation and airflow direction.",
-        "Position the fan guards.",
-        "Secure the fans and fan guards using the required hardware.",
-        "Verify all four fans are securely mounted."
-      ]
-    },
-
-    {
-      name:"Main Frame - Install Lid Clips",
-      time:"5 min",
-      ins:[
-        "Position the lid clips on the main frame.",
-        "Install the clips using the required hardware.",
-        "Verify alignment with the clips installed on the lid.",
-        "Test-fit the lid and verify it seats correctly."
-      ]
-    },
-
-    {
-      name:"Main Frame - Install Foam Seals",
-      time:"8 min",
-      ins:[
-        "Measure the required rubber foam sealing material.",
-        "Cut the foam seal to the required length.",
-        "Install the foam seal in the designated locations.",
-        "Verify the foam seal is fully seated and continuous."
-      ]
-    },
-
-    {
-      name:"Final Assembly Inspection",
-      time:"5 min",
-      ins:[
-        "Verify the acrylic back plate is secure.",
-        "Verify all lid and main frame clips are secure.",
-        "Verify all four fans and fan guards are installed correctly.",
-        "Verify the adhesive studs are properly positioned.",
-        "Verify all foam seals are properly installed.",
-        "Test-fit the lid onto the main frame.",
-        "Mark the work order ready for supervisor review."
-      ]
-    }
-
-  ]
+{
+name:"Gather Required Tools",
+time:"5 min",
+ins:[
+"Gather a rivet gun.",
+"Gather the required rivets.",
+"Gather the required screwdrivers and drivers.",
+"Gather measuring tools or placement templates.",
+"Gather cleaning supplies for the adhesive stud mounting surfaces.",
+"Gather scissors or the approved cutting tool for the foam seals.",
+"Verify all required tools are available before beginning assembly."
+]
 },
-  {id:"WO-16969",name:"UAV Assembly A-17",customer:"Apex Manufacturing",steps:[
-{name:"Inspect airframe",time:"8 min",ins:["Verify the airframe matches the work-order drawing.","Check mounting surfaces for damage, cracks, or debris.","Confirm the correct hardware kit is present."]},
-{name:"Install motor mount",time:"12 min",ins:["Position the motor mount on the marked mounting points.","Install the four mounting bolts by hand.","Tighten evenly to the specified torque."]},
-{name:"Connect wiring",time:"15 min",ins:["Route the harness through the designated channel.","Connect each labeled connector to its matching port.","Verify continuity before closing the enclosure."]},
-{name:"Install electronics cover",time:"7 min",ins:["Place the cover onto the assembly.","Confirm no wires are pinched.","Install and tighten all cover screws."]},
-{name:"Functional test",time:"10 min",ins:["Power the assembly using the approved test procedure.","Verify expected voltage readings.","Record the test result."]},
-{name:"Final inspection",time:"5 min",ins:["Verify all fasteners are installed.","Confirm labels and documentation are present.","Mark the work order ready for supervisor review."]}]},
-  {id:"WO-10479",name:"Pump Assembly P-204",customer:"Westline Systems",steps:[
-{name:"Inspect pump",time:"6 min",ins:["Inspect the pump housing for damage.","Verify the correct pump model."]},
-{name:"Install bracket",time:"10 min",ins:["Position the bracket.","Install and tighten the mounting hardware."]},
-{name:"Connect lines",time:"14 min",ins:["Connect inlet and outlet lines.","Check all fittings for proper seating."]},
-{name:"Test assembly",time:"8 min",ins:["Run the specified functional test.","Record the result."]}]},
-  {id:"WO-10477",name:"Electrical Control Box",customer:"Northstar Robotics",steps:[
-{name:"Inspect enclosure",time:"5 min",ins:["Verify enclosure and components match the drawing."]},
-{name:"Install components",time:"18 min",ins:["Install components in their marked locations."]},
-{name:"Wire components",time:"25 min",ins:["Route and terminate wires according to the schematic."]},
-{name:"Continuity test",time:"10 min",ins:["Check continuity of each required circuit."]},
-{name:"Final inspection",time:"5 min",ins:["Verify workmanship and documentation."]}]}
+
+{
+name:"Lid - Install Acrylic Back Plate",
+time:"8 min",
+ins:[
+"Position the acrylic back plate on the inside of the lid.",
+"Align the acrylic back plate with the mounting holes.",
+"Install the required rivets using the rivet gun.",
+"Verify the acrylic back plate is secure."
+]
+},
+
+{
+name:"Lid - Install Clips",
+time:"5 min",
+ins:[
+"Position the clips in their designated locations on the lid.",
+"Install the clips using the required hardware.",
+"Verify the clips are secure and correctly oriented.",
+"Verify the clips will properly engage with the main frame."
+]
+},
+
+{
+name:"Main Frame - Install Adhesive Studs",
+time:"10 min",
+ins:[
+"Clean the adhesive stud mounting locations on the bottom of the main frame.",
+"Verify the correct location for each adhesive stud.",
+"Install the adhesive studs.",
+"Verify all studs are properly positioned and securely attached."
+]
+},
+
+{
+name:"Main Frame - Install Fans and Fan Guards",
+time:"15 min",
+ins:[
+"Position all four fans in their designated locations.",
+"Verify the correct fan orientation and airflow direction.",
+"Position the fan guards.",
+"Secure the fans and fan guards using the required hardware.",
+"Verify all four fans are securely mounted."
+]
+},
+
+{
+name:"Main Frame - Install Lid Clips",
+time:"5 min",
+ins:[
+"Position the lid clips on the main frame.",
+"Install the clips using the required hardware.",
+"Verify alignment with the clips installed on the lid.",
+"Test-fit the lid and verify it seats correctly."
+]
+},
+
+{
+name:"Main Frame - Install Foam Seals",
+time:"8 min",
+ins:[
+"Measure the required rubber foam sealing material.",
+"Cut the foam seal to the required length.",
+"Install the foam seal in the designated locations.",
+"Verify the foam seal is fully seated and continuous."
+]
+},
+
+{
+name:"Final Assembly Inspection",
+time:"5 min",
+ins:[
+"Verify the acrylic back plate is secure.",
+"Verify all lid and main frame clips are secure.",
+"Verify all four fans and fan guards are installed correctly.",
+"Verify the adhesive studs are properly positioned.",
+"Verify all foam seals are properly installed.",
+"Test-fit the lid onto the main frame.",
+"Mark the work order ready for supervisor review."
+]
+}
+
+]
+},
+
+
+{
+id:"WO-16969",
+name:"UAV Assembly A-17",
+customer:"Apex Manufacturing",
+
+steps:[
+
+{
+name:"Inspect airframe",
+time:"8 min",
+ins:[
+"Verify the airframe matches the work-order drawing.",
+"Check mounting surfaces for damage, cracks, or debris.",
+"Confirm the correct hardware kit is present."
+]
+},
+
+{
+name:"Install motor mount",
+time:"12 min",
+ins:[
+"Position the motor mount on the marked mounting points.",
+"Install the four mounting bolts by hand.",
+"Tighten evenly to the specified torque."
+]
+},
+
+{
+name:"Connect wiring",
+time:"15 min",
+ins:[
+"Route the harness through the designated channel.",
+"Connect each labeled connector to its matching port.",
+"Verify continuity before closing the enclosure."
+]
+},
+
+{
+name:"Install electronics cover",
+time:"7 min",
+ins:[
+"Place the cover onto the assembly.",
+"Confirm no wires are pinched.",
+"Install and tighten all cover screws."
+]
+},
+
+{
+name:"Functional test",
+time:"10 min",
+ins:[
+"Power the assembly using the approved test procedure.",
+"Verify expected voltage readings.",
+"Record the test result."
+]
+},
+
+{
+name:"Final inspection",
+time:"5 min",
+ins:[
+"Verify all fasteners are installed.",
+"Confirm labels and documentation are present.",
+"Mark the work order ready for supervisor review."
+]
+}
+
+]
+},
+
+
+{
+id:"WO-10479",
+name:"Pump Assembly P-204",
+customer:"Westline Systems",
+
+steps:[
+
+{
+name:"Inspect pump",
+time:"6 min",
+ins:[
+"Inspect the pump housing for damage.",
+"Verify the correct pump model."
+]
+},
+
+{
+name:"Install bracket",
+time:"10 min",
+ins:[
+"Position the bracket.",
+"Install and tighten the mounting hardware."
+]
+},
+
+{
+name:"Connect lines",
+time:"14 min",
+ins:[
+"Connect inlet and outlet lines.",
+"Check all fittings for proper seating."
+]
+},
+
+{
+name:"Test assembly",
+time:"8 min",
+ins:[
+"Run the specified functional test.",
+"Record the result."
+]
+}
+
+]
+},
+
+
+{
+id:"WO-10477",
+name:"Electrical Control Box",
+customer:"Northstar Robotics",
+
+steps:[
+
+{
+name:"Inspect enclosure",
+time:"5 min",
+ins:[
+"Verify enclosure and components match the drawing."
+]
+},
+
+{
+name:"Install components",
+time:"18 min",
+ins:[
+"Install components in their marked locations."
+]
+},
+
+{
+name:"Wire components",
+time:"25 min",
+ins:[
+"Route and terminate wires according to the schematic."
+]
+},
+
+{
+name:"Continuity test",
+time:"10 min",
+ins:[
+"Check continuity of each required circuit."
+]
+},
+
+{
+name:"Final inspection",
+time:"5 min",
+ins:[
+"Verify workmanship and documentation."
+]
+}
+
+]
+}
+
 ];
-let progress=JSON.parse(localStorage.getItem("starlingDemoProgress")||"{}"), selected=null;
-function save(){localStorage.setItem("starlingDemoProgress",JSON.stringify(progress))}
+
+
+/* =========================
+   SAVED DATA
+========================= */
+
+let progress=
+JSON.parse(
+localStorage.getItem("starlingDemoProgress") || "{}"
+);
+
+let timing=
+JSON.parse(
+localStorage.getItem("starlingDemoTiming") || "{}"
+);
+
+let selected=null;
+
+
+function save(){
+
+localStorage.setItem(
+"starlingDemoProgress",
+JSON.stringify(progress)
+);
+
+localStorage.setItem(
+"starlingDemoTiming",
+JSON.stringify(timing)
+);
+
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+function elapsedMs(id){
+
+const t=timing[id];
+
+if(!t || !t.startedAt){
+return 0;
+}
+
+const end=t.completedAt || Date.now();
+
+return end-t.startedAt;
+
+}
+
+
+function formatTime(ms){
+
+if(!ms){
+return "—";
+}
+
+const totalSeconds=
+Math.floor(ms/1000);
+
+const hours=
+Math.floor(totalSeconds/3600);
+
+const minutes=
+Math.floor((totalSeconds%3600)/60);
+
+const seconds=
+totalSeconds%60;
+
+
+if(hours>0){
+
+return `${hours}h ${String(minutes).padStart(2,"0")}m ${String(seconds).padStart(2,"0")}s`;
+
+}
+
+return `${minutes}m ${String(seconds).padStart(2,"0")}s`;
+
+}
+
+
+function timeFor(id){
+
+return formatTime(
+elapsedMs(id)
+);
+
+}
+
+
+/* =========================
+   HOME PAGE
+========================= */
+
 function renderHome(){
- const box=document.getElementById("workOrders");box.innerHTML="";
- jobs.forEach((j,i)=>{let p=progress[j.id]||0, pct=Math.round(p/j.steps.length*100);box.insertAdjacentHTML("beforeend",`<button class="wo" data-id="${j.id}"><div class="row"><div><div class="wo-title">${j.id}</div><div class="muted small">${j.name}</div></div><span class="status">${p>=j.steps.length?"Complete":p?"In Progress":"Not Started"}</span></div><div class="progress"><div class="bar" style="width:${pct}%"></div></div><div class="muted small" style="margin-top:7px">${p} / ${j.steps.length} steps complete · ${j.customer}</div></button>`)});
- box.querySelectorAll(".wo").forEach(b=>b.onclick=()=>openJob(b.dataset.id));
- document.getElementById("completedSteps").textContent=jobs.reduce((a,j)=>a+(progress[j.id]||0),0);
- document.getElementById("activeJobs").textContent=jobs.filter(j=>(progress[j.id]||0)<j.steps.length).length;
- document.getElementById("managerRows").innerHTML=jobs.map(j=>{let p=progress[j.id]||0;return `<tr><td>Dominic Knight</td><td>${j.id}</td><td>${p<j.steps.length?j.steps[p].name:"All steps complete"}</td><td>${p>=j.steps.length?"Complete":p?"Working":"Not Started"}</td></tr>`}).join("");
+
+const box=
+document.getElementById("workOrders");
+
+box.innerHTML="";
+
+
+jobs.forEach(j=>{
+
+let p=
+progress[j.id] || 0;
+
+let pct=
+Math.round(
+p/j.steps.length*100
+);
+
+let status;
+
+if(p>=j.steps.length){
+
+status="Complete";
+
 }
-function openJob(id){selected=jobs.find(j=>j.id===id);document.getElementById("home").classList.add("hidden");document.getElementById("job").classList.remove("hidden");renderJob()}
+else if(p>0 || timing[j.id]){
+
+status="In Progress";
+
+}
+else{
+
+status="Not Started";
+
+}
+
+
+box.insertAdjacentHTML(
+"beforeend",
+
+`
+<button class="wo" data-id="${j.id}">
+
+<div class="row">
+
+<div>
+
+<div class="wo-title">
+${j.id}
+</div>
+
+<div class="muted small">
+${j.name}
+</div>
+
+</div>
+
+
+<div>
+
+<div style="text-align:right">
+
+<span class="status">
+${status}
+</span>
+
+<div class="time-display">
+${timeFor(j.id)}
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="bar"
+style="width:${pct}%">
+</div>
+
+</div>
+
+
+<div
+class="muted small"
+style="margin-top:7px">
+
+${p} / ${j.steps.length} steps complete · ${j.customer}
+
+</div>
+
+</button>
+`
+
+);
+
+});
+
+
+box
+.querySelectorAll(".wo")
+.forEach(b=>{
+
+b.onclick=
+()=>openJob(
+b.dataset.id
+);
+
+});
+
+
+document
+.getElementById("completedSteps")
+.textContent=
+
+jobs.reduce(
+(a,j)=>
+a+(progress[j.id]||0),
+0
+);
+
+
+document
+.getElementById("activeJobs")
+.textContent=
+
+jobs.filter(j=>{
+
+let p=
+progress[j.id]||0;
+
+return (
+timing[j.id] &&
+p<j.steps.length
+);
+
+}).length;
+
+
+/* MANAGER TABLE */
+
+document
+.getElementById("managerRows")
+.innerHTML=
+
+jobs.map(j=>{
+
+let p=
+progress[j.id]||0;
+
+let status;
+
+if(p>=j.steps.length){
+
+status="Complete";
+
+}
+else if(timing[j.id]){
+
+status="Working";
+
+}
+else{
+
+status="Not Started";
+
+}
+
+
+let currentStep;
+
+if(p>=j.steps.length){
+
+currentStep=
+"All steps complete";
+
+}
+else{
+
+currentStep=
+j.steps[p].name;
+
+}
+
+
+return `
+
+<tr>
+
+<td>
+Dominic Knight
+</td>
+
+<td>
+${j.id}
+</td>
+
+<td>
+${currentStep}
+</td>
+
+<td>
+${status}
+</td>
+
+<td>
+${timeFor(j.id)}
+</td>
+
+</tr>
+
+`;
+
+}).join("");
+
+}
+
+
+/* =========================
+   OPEN WORK ORDER
+========================= */
+
+function openJob(id){
+
+selected=
+jobs.find(
+j=>j.id===id
+);
+
+
+let p=
+progress[selected.id] || 0;
+
+
+/*
+Timer begins the FIRST time
+the work order is opened.
+*/
+
+if(
+p<selected.steps.length &&
+(
+!timing[selected.id] ||
+!timing[selected.id].startedAt
+)
+){
+
+timing[selected.id]={
+
+startedAt:Date.now(),
+
+completedAt:null
+
+};
+
+save();
+
+}
+
+
+document
+.getElementById("home")
+.classList.add("hidden");
+
+
+document
+.getElementById("job")
+.classList.remove("hidden");
+
+
+renderJob();
+
+}
+
+
+/* =========================
+   WORK ORDER PAGE
+========================= */
+
 function renderJob(){
- let p=progress[selected.id]||0;document.getElementById("jobTitle").textContent=selected.id;document.getElementById("jobDesc").textContent=`${selected.name} · ${selected.customer}`;
- document.getElementById("steps").innerHTML=selected.steps.map((s,i)=>`<div class="step ${i<p?"done":i===p?"current":""}"><span class="dot"></span><div><div class="stepname small"><strong>${i+1}. ${s.name}</strong></div><div class="muted small">${i<p?"Completed":i===p?"Current step":"Locked"}</div></div></div>`).join("");
- let complete=p>=selected.steps.length;if(complete){document.getElementById("taskTitle").textContent="Work Order Complete";document.getElementById("instructions").innerHTML="<li>All work-order steps have been completed.</li>";document.getElementById("expected").textContent="Done";document.getElementById("stepNum").textContent=selected.steps.length+"/"+selected.steps.length;document.getElementById("done").disabled=true;document.getElementById("done").textContent="Work Order Complete";document.getElementById("message").textContent="Completion recorded in this demo.";return}
- let s=selected.steps[p];document.getElementById("taskTitle").textContent=s.name;document.getElementById("instructions").innerHTML=s.ins.map(x=>`<li>${x}</li>`).join("");document.getElementById("expected").textContent=s.time;document.getElementById("stepNum").textContent=(p+1)+"/"+selected.steps.length;document.getElementById("done").disabled=false;document.getElementById("done").textContent="Mark Step Done";document.getElementById("message").textContent=`Step ${p+1} of ${selected.steps.length}`;
+
+let p=
+progress[selected.id] || 0;
+
+
+document
+.getElementById("jobTitle")
+.textContent=
+selected.id;
+
+
+document
+.getElementById("jobDesc")
+.textContent=
+`${selected.name} · ${selected.customer}`;
+
+
+/* STEP LIST */
+
+document
+.getElementById("steps")
+.innerHTML=
+
+selected.steps.map(
+(s,i)=>`
+
+<div
+class="step
+${i<p
+?"done"
+:i===p
+?"current"
+:""}">
+
+<span class="dot"></span>
+
+<div>
+
+<div class="stepname small">
+
+<strong>
+${i+1}. ${s.name}
+</strong>
+
+</div>
+
+<div class="muted small">
+
+${i<p
+?"Completed"
+:i===p
+?"Current step"
+:"Locked"}
+
+</div>
+
+</div>
+
+</div>
+
+`
+).join("");
+
+
+/* LIVE TOTAL TIMER */
+
+document
+.getElementById("jobTimer")
+.textContent=
+timeFor(selected.id);
+
+
+/* CHECK COMPLETE */
+
+let complete=
+p>=selected.steps.length;
+
+
+if(complete){
+
+document
+.getElementById("taskTitle")
+.textContent=
+"Work Order Complete";
+
+
+document
+.getElementById("instructions")
+.innerHTML=
+
+`
+<li>
+All work-order steps have been completed.
+</li>
+
+<li>
+Total completion time:
+<strong>${timeFor(selected.id)}</strong>
+</li>
+`;
+
+
+document
+.getElementById("expected")
+.textContent=
+"Done";
+
+
+document
+.getElementById("stepNum")
+.textContent=
+selected.steps.length+
+"/"+
+selected.steps.length;
+
+
+document
+.getElementById("done")
+.disabled=true;
+
+
+document
+.getElementById("done")
+.textContent=
+"Work Order Complete";
+
+
+document
+.getElementById("message")
+.textContent=
+"Completion time recorded.";
+
+
+return;
+
 }
-document.getElementById("done").onclick=()=>{if(!selected)return;let p=progress[selected.id]||0;if(p<selected.steps.length){progress[selected.id]=p+1;save();renderJob()}};
-document.getElementById("back").onclick=()=>{document.getElementById("job").classList.add("hidden");document.getElementById("home").classList.remove("hidden");renderHome()};
+
+
+/* CURRENT STEP */
+
+let s=
+selected.steps[p];
+
+
+document
+.getElementById("taskTitle")
+.textContent=
+s.name;
+
+
+document
+.getElementById("instructions")
+.innerHTML=
+
+s.ins.map(
+x=>`<li>${x}</li>`
+).join("");
+
+
+document
+.getElementById("expected")
+.textContent=
+s.time;
+
+
+document
+.getElementById("stepNum")
+.textContent=
+(p+1)+
+"/"+
+selected.steps.length;
+
+
+document
+.getElementById("done")
+.disabled=false;
+
+
+document
+.getElementById("done")
+.textContent=
+"Mark Step Done";
+
+
+document
+.getElementById("message")
+.textContent=
+
+`Step ${p+1} of ${selected.steps.length}`;
+
+}
+
+
+/* =========================
+   COMPLETE STEP
+========================= */
+
+document
+.getElementById("done")
+.onclick=()=>{
+
+if(!selected){
+return;
+}
+
+
+let p=
+progress[selected.id] || 0;
+
+
+if(p<selected.steps.length){
+
+progress[selected.id]=
+p+1;
+
+
+/*
+If this was the LAST step,
+record the completion time.
+*/
+
+if(
+progress[selected.id]
+>=
+selected.steps.length
+){
+
+if(!timing[selected.id]){
+
+timing[selected.id]={
+
+startedAt:Date.now(),
+
+completedAt:null
+
+};
+
+}
+
+
+timing[selected.id]
+.completedAt=
+Date.now();
+
+}
+
+
+save();
+
+renderJob();
+
+}
+
+};
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+document
+.getElementById("back")
+.onclick=()=>{
+
+document
+.getElementById("job")
+.classList.add("hidden");
+
+
+document
+.getElementById("home")
+.classList.remove("hidden");
+
+
 renderHome();
+
+};
+
+
+/* =========================
+   LIVE UPDATE
+========================= */
+
+/*
+Updates the timer every second
+without refreshing the page.
+*/
+
+setInterval(()=>{
+
+if(
+!document
+.getElementById("job")
+.classList.contains("hidden")
+&&
+selected
+){
+
+document
+.getElementById("jobTimer")
+.textContent=
+timeFor(selected.id);
+
+}
+
+else if(
+!document
+.getElementById("home")
+.classList.contains("hidden")
+){
+
+renderHome();
+
+}
+
+},1000);
+
+
+/* INITIAL LOAD */
+
+renderHome();
+
 </script>
+
 </body>
 </html>
