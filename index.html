@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Starling Workflow Demo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f6f8;color:#17202a}
+button,input{font:inherit}button{cursor:pointer}.app{max-width:1100px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}.brand{font-weight:800;font-size:22px}.muted{color:#68737d}.badge{padding:6px 10px;border-radius:999px;background:#e8eef3;font-size:12px;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:white;border:1px solid #dce2e7;border-radius:14px;padding:20px;box-shadow:0 2px 8px #00000008}
+h1{font-size:28px;margin:0 0 8px}h2{font-size:20px;margin:0 0 8px}h3{font-size:16px;margin:0}.small{font-size:13px}
+.wo{width:100%;text-align:left;border:1px solid #dce2e7;background:white;border-radius:12px;padding:17px;margin-bottom:10px}.wo:hover{background:#f8fafb}.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.wo-title{font-weight:750}.status{font-size:12px;font-weight:700;padding:5px 9px;border-radius:999px;background:#eef2f5}.progress{height:7px;background:#e9edf0;border-radius:10px;overflow:hidden;margin-top:13px}.bar{height:100%;background:#263746;border-radius:10px}
+.hidden{display:none!important}.back{border:0;background:transparent;padding:0 0 14px;font-weight:700}.steps{margin-top:20px}.step{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #edf0f2}.dot{width:10px;height:10px;border-radius:50%;background:#cbd3d9;margin-top:5px;flex:none}.done .dot{background:#263746}.current .dot{box-shadow:0 0 0 4px #e5eaee;background:#263746}.done .stepname{text-decoration:line-through;color:#78838c}
+.instructions{background:#f6f8f9;border-radius:12px;padding:18px;margin:18px 0}.instructions li{margin:9px 0;line-height:1.45}.photo{height:170px;border-radius:12px;background:linear-gradient(135deg,#dfe5e9,#aeb8bf);display:flex;align-items:center;justify-content:center;color:#43515c;font-weight:800;margin-bottom:18px}
+.primary{width:100%;border:0;background:#17202a;color:white;padding:14px;border-radius:10px;font-weight:800}.primary:disabled{opacity:.5;cursor:not-allowed}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.kpi{background:#f6f8f9;border-radius:10px;padding:13px}.kpi strong{display:block;font-size:20px;margin-top:4px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}.tab{border:1px solid #dce2e7;background:white;padding:9px 13px;border-radius:9px;font-weight:700}.tab.active{background:#17202a;color:white}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px 8px;border-bottom:1px solid #edf0f2;font-size:14px}
+.notice{margin-top:12px;color:#4f5c65;font-size:13px}
+@media(max-width:760px){.app{padding:15px}.grid{grid-template-columns:1fr}.top{align-items:flex-start}.kpis{grid-template-columns:1fr 1fr}.kpis .kpi:last-child{grid-column:span 2}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div><div class="brand">STARLING WORKFLOW</div><div class="muted small">Technician work-order tracking demo</div></div><span class="badge">Demo Mode</span></header>
+
+<section id="home">
+  <div class="grid">
+    <div class="card">
+      <h2>Technician</h2>
+      <p class="muted small">Signed in as <strong>Dominic Knight</strong></p>
+      <div id="workOrders"></div>
+    </div>
+    <div class="card">
+      <h2>Manager Overview</h2>
+      <p class="muted small">Live-style view of technician progress</p>
+      <div class="kpis">
+        <div class="kpi"><span class="muted small">Active Jobs</span><strong id="activeJobs">2</strong></div>
+        <div class="kpi"><span class="muted small">Completed Steps</span><strong id="completedSteps">2</strong></div>
+        <div class="kpi"><span class="muted small">Technicians</span><strong>4</strong></div>
+      </div>
+      <div style="margin-top:20px;overflow:auto">
+        <table><thead><tr><th>Technician</th><th>Work Order</th><th>Current Step</th><th>Status</th></tr></thead>
+        <tbody id="managerRows"></tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="job" class="hidden">
+  <button class="back" id="back">← Back to Work Orders</button>
+  <div class="grid">
+    <aside class="card"><div class="muted small">WORK ORDER</div><h2 id="jobTitle"></h2><div class="muted small" id="jobDesc"></div><div class="steps" id="steps"></div></aside>
+    <main class="card">
+      <div class="muted small">CURRENT INSTRUCTION</div><h1 id="taskTitle"></h1>
+      <div class="photo">INSTRUCTION IMAGE / DIAGRAM</div>
+      <div class="instructions"><h3>Instructions</h3><ol id="instructions"></ol></div>
+      <div class="kpis"><div class="kpi"><span class="muted small">Expected</span><strong id="expected"></strong></div><div class="kpi"><span class="muted small">Step</span><strong id="stepNum"></strong></div><div class="kpi"><span class="muted small">Technician</span><strong style="font-size:15px">Dominic</strong></div></div>
+      <button class="primary" id="done">Mark Step Done</button>
+      <div class="notice" id="message" aria-live="polite"></div>
+    </main>
+  </div>
+</section>
+</div>
+<script>
+const jobs=[
+{id:"WO-10482",name:"UAV Assembly A-17",customer:"Apex Manufacturing",steps:[
+{name:"Inspect airframe",time:"8 min",ins:["Verify the airframe matches the work-order drawing.","Check mounting surfaces for damage, cracks, or debris.","Confirm the correct hardware kit is present."]},
+{name:"Install motor mount",time:"12 min",ins:["Position the motor mount on the marked mounting points.","Install the four mounting bolts by hand.","Tighten evenly to the specified torque."]},
+{name:"Connect wiring",time:"15 min",ins:["Route the harness through the designated channel.","Connect each labeled connector to its matching port.","Verify continuity before closing the enclosure."]},
+{name:"Install electronics cover",time:"7 min",ins:["Place the cover onto the assembly.","Confirm no wires are pinched.","Install and tighten all cover screws."]},
+{name:"Functional test",time:"10 min",ins:["Power the assembly using the approved test procedure.","Verify expected voltage readings.","Record the test result."]},
+{name:"Final inspection",time:"5 min",ins:["Verify all fasteners are installed.","Confirm labels and documentation are present.","Mark the work order ready for supervisor review."]}]},
+{id:"WO-10479",name:"Pump Assembly P-204",customer:"Westline Systems",steps:[
+{name:"Inspect pump",time:"6 min",ins:["Inspect the pump housing for damage.","Verify the correct pump model."]},
+{name:"Install bracket",time:"10 min",ins:["Position the bracket.","Install and tighten the mounting hardware."]},
+{name:"Connect lines",time:"14 min",ins:["Connect inlet and outlet lines.","Check all fittings for proper seating."]},
+{name:"Test assembly",time:"8 min",ins:["Run the specified functional test.","Record the result."]}]},
+{id:"WO-10477",name:"Electrical Control Box",customer:"Northstar Robotics",steps:[
+{name:"Inspect enclosure",time:"5 min",ins:["Verify enclosure and components match the drawing."]},
+{name:"Install components",time:"18 min",ins:["Install components in their marked locations."]},
+{name:"Wire components",time:"25 min",ins:["Route and terminate wires according to the schematic."]},
+{name:"Continuity test",time:"10 min",ins:["Check continuity of each required circuit."]},
+{name:"Final inspection",time:"5 min",ins:["Verify workmanship and documentation."]}]}
+];
+let progress=JSON.parse(localStorage.getItem("starlingDemoProgress")||"{}"), selected=null;
+function save(){localStorage.setItem("starlingDemoProgress",JSON.stringify(progress))}
+function renderHome(){
+ const box=document.getElementById("workOrders");box.innerHTML="";
+ jobs.forEach((j,i)=>{let p=progress[j.id]||0, pct=Math.round(p/j.steps.length*100);box.insertAdjacentHTML("beforeend",`<button class="wo" data-id="${j.id}"><div class="row"><div><div class="wo-title">${j.id}</div><div class="muted small">${j.name}</div></div><span class="status">${p>=j.steps.length?"Complete":p?"In Progress":"Not Started"}</span></div><div class="progress"><div class="bar" style="width:${pct}%"></div></div><div class="muted small" style="margin-top:7px">${p} / ${j.steps.length} steps complete · ${j.customer}</div></button>`)});
+ box.querySelectorAll(".wo").forEach(b=>b.onclick=()=>openJob(b.dataset.id));
+ document.getElementById("completedSteps").textContent=jobs.reduce((a,j)=>a+(progress[j.id]||0),0);
+ document.getElementById("activeJobs").textContent=jobs.filter(j=>(progress[j.id]||0)<j.steps.length).length;
+ document.getElementById("managerRows").innerHTML=jobs.map(j=>{let p=progress[j.id]||0;return `<tr><td>Dominic Knight</td><td>${j.id}</td><td>${p<j.steps.length?j.steps[p].name:"All steps complete"}</td><td>${p>=j.steps.length?"Complete":p?"Working":"Not Started"}</td></tr>`}).join("");
+}
+function openJob(id){selected=jobs.find(j=>j.id===id);document.getElementById("home").classList.add("hidden");document.getElementById("job").classList.remove("hidden");renderJob()}
+function renderJob(){
+ let p=progress[selected.id]||0;document.getElementById("jobTitle").textContent=selected.id;document.getElementById("jobDesc").textContent=`${selected.name} · ${selected.customer}`;
+ document.getElementById("steps").innerHTML=selected.steps.map((s,i)=>`<div class="step ${i<p?"done":i===p?"current":""}"><span class="dot"></span><div><div class="stepname small"><strong>${i+1}. ${s.name}</strong></div><div class="muted small">${i<p?"Completed":i===p?"Current step":"Locked"}</div></div></div>`).join("");
+ let complete=p>=selected.steps.length;if(complete){document.getElementById("taskTitle").textContent="Work Order Complete";document.getElementById("instructions").innerHTML="<li>All work-order steps have been completed.</li>";document.getElementById("expected").textContent="Done";document.getElementById("stepNum").textContent=selected.steps.length+"/"+selected.steps.length;document.getElementById("done").disabled=true;document.getElementById("done").textContent="Work Order Complete";document.getElementById("message").textContent="Completion recorded in this demo.";return}
+ let s=selected.steps[p];document.getElementById("taskTitle").textContent=s.name;document.getElementById("instructions").innerHTML=s.ins.map(x=>`<li>${x}</li>`).join("");document.getElementById("expected").textContent=s.time;document.getElementById("stepNum").textContent=(p+1)+"/"+selected.steps.length;document.getElementById("done").disabled=false;document.getElementById("done").textContent="Mark Step Done";document.getElementById("message").textContent=`Step ${p+1} of ${selected.steps.length}`;
+}
+document.getElementById("done").onclick=()=>{if(!selected)return;let p=progress[selected.id]||0;if(p<selected.steps.length){progress[selected.id]=p+1;save();renderJob()}};
+document.getElementById("back").onclick=()=>{document.getElementById("job").classList.add("hidden");document.getElementById("home").classList.remove("hidden");renderHome()};
+renderHome();
+</script>
+</body>
+</html>
